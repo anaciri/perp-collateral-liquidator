@@ -22,7 +22,7 @@ async function main(): Promise<void> {
     await liquidator.setup({
         subgraphEndPt: process.env.SUBGRAPH_ENDPT,
         wallet: new Wallet(process.env.LIQUIDATOR_PK).connect(
-            new ethers.providers.StaticJsonRpcProvider(process.env.WEB3_ENDPT, +process.env.NETWORK),
+            new ethers.providers.JsonRpcProvider(process.env.WEB3_ENDPT, +process.env.NETWORK),
         ),
         liquidatorContractAddr: process.env.LIQUIDATOR_CONTRACT,
         maxSettlementTokenSpent: process.env.MAX_SETTLEMENT_TOKEN_SPENT,

@@ -10,7 +10,6 @@ slither
 /tmp
 contracts/hardhat-dependency-compiler/*
 .openzeppelin/unknown-31337.json
-.env*
 !.env.build.example
 !.env.runtime.example
 /build

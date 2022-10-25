@@ -9,6 +9,8 @@ import { IERC20Metadata__factory } from "../typechain/perp-curie/factories/IERC2
 import { IERC20Metadata } from "../typechain/perp-curie/IERC20Metadata"
 import { LiquidationType, Metadata } from "./metadata"
 import { sleep } from "./utils"
+import liquidatedLogs from '../logs/liquidated.json';
+import fs from 'fs';
 
 interface GraphData {
     id: string
@@ -233,6 +235,14 @@ export class Liquidator {
                             txHash: tx.hash,
                         },
                     })
+
+                    fs.writeFileSync('../logs/liquidatedLogs.json', JSON.stringify(
+                      [...liquidatedLogs, {
+                        account, hash: tx.hash
+                      }],
+                      null,
+                      2
+                    ))
 
                     this.nextNonce++
                     await this.txCheck(tx)

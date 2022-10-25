@@ -1,4 +1,3 @@
-import mainMetadataOptimismKovan from "@perp/curie-deployments/optimism-kovan/core/metadata.json"
 import mainMetadataOptimism from "@perp/curie-deployments/optimism/core/metadata.json"
 import { DeployFunction } from "hardhat-deploy/types"
 import { Liquidator } from "../typechain"
@@ -14,7 +13,7 @@ const func: DeployFunction = async function (hre: any) {
     const { deploy } = deployments
 
     const { deployer } = await getNamedAccounts()
-    const metadata = +process.env.NETWORK === 10 ? mainMetadataOptimism : mainMetadataOptimismKovan
+    const metadata = mainMetadataOptimism
 
     await deploy("Liquidator", {
         from: deployer,

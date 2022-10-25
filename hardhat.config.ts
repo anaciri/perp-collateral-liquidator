@@ -9,7 +9,7 @@ import "hardhat-gas-reporter"
 import { HardhatUserConfig } from "hardhat/config"
 import "solidity-coverage"
 import "./mocha-test"
-import { getMnemonic, getUrl, hardhatForkConfig } from "./scripts/hardhatConfig"
+import { getUrl, hardhatForkConfig } from "./scripts/hardhatConfig"
 
 enum ChainId {
     OPTIMISM_CHAIN_ID = 10,
@@ -51,16 +51,10 @@ const config: HardhatUserConfig = {
         },
         optimismKovan: {
             url: getUrl(CompanionNetwork.optimismKovan),
-            accounts: {
-                mnemonic: getMnemonic(CompanionNetwork.optimismKovan),
-            },
             chainId: ChainId.OPTIMISM_KOVAN_CHAIN_ID,
         },
         optimism: {
             url: getUrl(CompanionNetwork.optimism),
-            accounts: {
-                mnemonic: getMnemonic(CompanionNetwork.optimism),
-            },
             chainId: ChainId.OPTIMISM_CHAIN_ID,
         },
     },
